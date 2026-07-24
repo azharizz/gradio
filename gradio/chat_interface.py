@@ -972,7 +972,7 @@ class ChatInterface(Blocks):
                     yield first_response, history_
                 else:
                     yield first_response, history_, *additional_outputs
-            except StopIteration:
+            except (StopIteration, StopAsyncIteration):
                 yield None, history
             async for response in generator:
                 if self.additional_outputs:
